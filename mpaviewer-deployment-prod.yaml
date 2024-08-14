@@ -148,3 +148,13 @@ spec:
               persistentVolumeClaim:
                 claimName: pvc-mpaviewer-data-prod
           restartPolicy: Never
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: mpaviewer-pdb-prod
+spec:
+  minAvailable: 0
+  selector:
+    matchLabels:
+      app: mpaviewer
